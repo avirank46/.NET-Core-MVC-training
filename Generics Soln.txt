@@ -1,0 +1,48 @@
+using System;
+
+namespace _21jan
+{
+    class ProductInfo<T>
+    {
+        public T[] productname;
+        public T[] producttype;
+
+        int size;
+        public ProductInfo (int size)
+        {
+            this.size = size;
+            productname = new T[size];
+            producttype= new T[size];
+        }
+        public void PrintDetails()
+        {
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine(productname[i] + "," + producttype[i]);
+            }
+        }
+        public void addProduct(T prod_name, int position)
+        {
+            this.productname[position] = prod_name;
+        }
+        public void addProductType(T type_name, int position)
+        {
+            this.producttype[position] = type_name;
+        }
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            ProductInfo<string> prodinfo = new ProductInfo<string>(2);
+            prodinfo.addProduct("Cornflakes", 0);
+            prodinfo.addProduct("Curd", 1);
+            prodinfo.addProductType("Grocery", 0);
+            prodinfo.addProductType("Dairy", 1);
+            prodinfo.PrintDetails();
+
+        }
+    }
+}
